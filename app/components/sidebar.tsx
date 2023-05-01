@@ -1,3 +1,4 @@
+/* 这里主要是对siderbar 进行的设置，主要的设置内容都在这里 */
 import { useEffect, useRef } from "react";
 
 import styles from "./home.module.scss";
@@ -15,12 +16,14 @@ import Locale from "../locales";
 
 import { useAppConfig, useChatStore } from "../store";
 
+// 从 constant 引入一些常量进行设置，添加了 SHOP_URL
 import {
   MAX_SIDEBAR_WIDTH,
   MIN_SIDEBAR_WIDTH,
   NARROW_SIDEBAR_WIDTH,
   Path,
   REPO_URL,
+  SHOP_URL,
 } from "../constant";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -90,22 +93,22 @@ export function SideBar(props: { className?: string }) {
   const config = useAppConfig();
 
   return (
+    /*容器一级目录*/
     <div
       className={`${styles.sidebar} ${props.className} ${
         shouldNarrow && styles["narrow-sidebar"]
       }`}
     >
       <div className={styles["sidebar-header"]}>
-        <div className={styles["sidebar-title"]}>ChatGPT Next</div>
-        <div className={styles["sidebar-sub-title"]}>
-          Build your own AI assistant.
-        </div>
+        <div className={styles["sidebar-title"]}>ChatGPT书童</div>
+        <div className={styles["sidebar-sub-title"]}>成就你的AI智能助理.</div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
           <ChatGptIcon />
         </div>
       </div>
 
       <div className={styles["sidebar-header-bar"]}>
+        {/* mask 插入按钮 */}
         <IconButton
           icon={<MaskIcon />}
           text={shouldNarrow ? undefined : Locale.Mask.Name}
@@ -113,15 +116,20 @@ export function SideBar(props: { className?: string }) {
           onClick={() => navigate(Path.NewChat, { state: { fromHome: true } })}
           shadow
         />
+
+        {/* 修改插入按钮为购买服务*/}
         <IconButton
           icon={<PluginIcon />}
-          text={shouldNarrow ? undefined : Locale.Plugin.Name}
+          text={shouldNarrow ? undefined : "获取使用码"}
           className={styles["sidebar-bar-button"]}
-          onClick={() => showToast(Locale.WIP)}
+          onClick={() =>
+            (window.location.href = "https://shop.macthink.top/#/")
+          }
           shadow
         />
       </div>
 
+      {/* 这是注释的内容 */}
       <div
         className={styles["sidebar-body"]}
         onClick={(e) => {
@@ -146,11 +154,15 @@ export function SideBar(props: { className?: string }) {
               <IconButton icon={<SettingsIcon />} shadow />
             </Link>
           </div>
+
+          {/*目前注释掉现有的github 的按钮 */}
+          {/*
           <div className={styles["sidebar-action"]}>
             <a href={REPO_URL} target="_blank">
               <IconButton icon={<GithubIcon />} shadow />
             </a>
           </div>
+          */}
         </div>
         <div>
           <IconButton
