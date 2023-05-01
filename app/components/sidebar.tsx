@@ -111,7 +111,7 @@ export function SideBar(props: { className?: string }) {
         {/* mask 插入按钮 */}
         <IconButton
           icon={<MaskIcon />}
-          text={shouldNarrow ? undefined : Locale.Mask.Name}
+          text={shouldNarrow ? undefined : "开始问"}
           className={styles["sidebar-bar-button"]}
           onClick={() => navigate(Path.NewChat, { state: { fromHome: true } })}
           shadow
