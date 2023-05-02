@@ -4,7 +4,8 @@ export const REPO = "ChatGPT-Next-Web";
 export const REPO_URL = `https://github.com/${OWNER}/${REPO}`;
 export const SHOP_URL = `https://shop.macthink.top/#/`; // 添加常量，定义的后续访问的购买的链接
 export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
-export const UPDATE_URL = `${REPO_URL}#keep-updated`;
+export const OLD_UPDATE_URL = `${REPO_URL}#keep-updated`;
+export const UPDATE_URL = `https://shop.macthink.top/#/`; // 添加常量，定义的update url
 export const FETCH_COMMIT_URL = `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=1`;
 export const FETCH_TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=1`;
 export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
